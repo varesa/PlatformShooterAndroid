@@ -9,6 +9,7 @@ public class PlatformShooterMainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(new PlatformShooterGameView(getApplicationContext()));
     }
 
     @Override
