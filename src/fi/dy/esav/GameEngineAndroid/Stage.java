@@ -50,8 +50,6 @@ public class Stage extends SurfaceView {
 		paint = new Paint();
 		paint.setColor(Color.WHITE);
 		paint.setStyle(Paint.Style.FILL);
-		
-		display = ((Storage) engine.getCustomStorage()).display;
 	}
 	
 	/**
@@ -96,6 +94,10 @@ public class Stage extends SurfaceView {
 	 * Draw all entities on screen
 	 */
 	public void draw() {
+		if(display == null) {
+			display = ((Storage) engine.getCustomStorage()).display;
+		}
+		
 		while(!getHolder().getSurface().isValid()) {}
 		
 		Canvas canvas = getHolder().lockCanvas();
