@@ -5,7 +5,8 @@ package fi.dy.esav.GameEngineAndroid;
 
 public class Rectangle {
 
-	private double x, y, width, height;
+	public double x, y;
+	public double width, height;
 
 	public Rectangle() {
 	}

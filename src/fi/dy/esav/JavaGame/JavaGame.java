@@ -1,7 +1,7 @@
 package fi.dy.esav.JavaGame;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
 
 public class JavaGame {
 	
@@ -12,7 +12,7 @@ public class JavaGame {
 	 * Main method
 	 */
 	public static void main(String[] args) {
-		engine = new GameEngine();
+		/*engine = new GameEngine();
 		engine.start();
 
 		engine.getStage().setTitle("The Hard-O-Game");
@@ -39,13 +39,12 @@ public class JavaGame {
 		}
 		
 		engine.stop();
-		engine.getStage().dispose();
+		engine.getStage().dispose();*/
 	}
 
 	public static void close() {
 		world.clear();
 		engine.stop();
-		engine.getStage().dispose();
 	}
 	
 	/**

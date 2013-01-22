@@ -1,11 +1,14 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroidAndroid.enums.ENTITY;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
 public class AiNode extends Entity {
 	
@@ -31,19 +34,11 @@ public class AiNode extends Entity {
 		this.setProperty(ENTITY.NO_DRAW);
 	}
 	
-	@Override
-	public void draw(Graphics g) {
-		g.drawOval((int)x-5, (int)y-5, 10, 10);
-	}
+	Paint paint = new Paint();
 	
-	public static ArrayList<AiNode> getNodes() {
-		ArrayList<AiNode> nodes = new ArrayList<AiNode>();
-		for(Entity ent: JavaGame.getEngine().getEntities()) {
-			if (ent instanceof AiNode) {
-				nodes.add((AiNode) ent);
-			}
-		}
-		return nodes;
+	@Override
+	public void draw(Canvas c) {
+		c.drawOval(new RectF((int)x-5, (int)y-5, 10, 10), paint);
 	}
 	
 	@Override

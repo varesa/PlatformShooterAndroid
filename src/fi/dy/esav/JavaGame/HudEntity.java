@@ -1,11 +1,9 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Font;
-import java.awt.Graphics;
-
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroidAndroid.enums.ENTITY;
+import android.graphics.Canvas;
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
 public class HudEntity extends Entity {
 
@@ -15,11 +13,11 @@ public class HudEntity extends Entity {
 	}
 	
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Canvas c) {
 		String score = String.valueOf(JavaGame.getWorld().getScore().getKills());
-		Font font = new Font("Arial", Font.PLAIN, 20);
+		/*Font font = new Font("Arial", Font.PLAIN, 20);
 		g.setFont(font);
-		g.drawString(score, 20, engine.getStage().getContentPane().getHeight()-20);
+		g.drawString(score, 20, engine.getStage().getContentPane().getHeight()-20);*/ //TODO: commented out
 	}
 	
 	

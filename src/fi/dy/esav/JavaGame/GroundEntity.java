@@ -1,17 +1,19 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.Rectangle;
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroidAndroid.enums.ENTITY;
 
 public class GroundEntity extends Entity {
 	
 	private int width = 10, height = 10;
-	private Color color = Color.BLACK;
+	private int color = Color.BLACK;
 
 	public GroundEntity(GameEngine engine) {
 		super(engine);
@@ -24,14 +26,16 @@ public class GroundEntity extends Entity {
 		
 		x = rect.x;
 		y = rect.y;
-		width = rect.width;
-		height = rect.height;
+		width = (int) rect.width;
+		height = (int) rect.height;
 	}
 	
 	@Override
-	public void draw(Graphics g) {
-		g.setColor(color);
-		g.fillRect((int)x, (int)y, width, height);
+	public void draw(Canvas c) {
+		Paint paint = new Paint();
+		paint.setColor(color);
+		paint.setStyle(Paint.Style.FILL);
+		c.drawRect(new RectF((int)x, (int)y, width, height), paint);
 	}
 
 	/**

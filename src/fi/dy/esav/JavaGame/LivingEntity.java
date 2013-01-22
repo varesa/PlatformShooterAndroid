@@ -1,11 +1,14 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Color;
-import java.awt.Graphics;
+
 import java.util.ArrayList;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
 import fi.dy.esav.JavaGame.enums.DIRECTION;
 
 public class LivingEntity extends Entity {
@@ -13,7 +16,7 @@ public class LivingEntity extends Entity {
 	protected int width = 64;
 	protected int height = 64;
 	
-	protected Color color = Color.GRAY;
+	protected int color = Color.GRAY;
 	
 	protected double xacc = 1.5;
 	protected double xdec = 0.75;
@@ -37,9 +40,10 @@ public class LivingEntity extends Entity {
 	}
 	
 	@Override
-	public void draw(Graphics g) {
-		g.setColor(color);
-		g.drawRect((int)x, (int)y, 64, 64);
+	public void draw(Canvas c) {
+		Paint paint = new Paint();
+		paint.setColor(color);
+		c.drawRect(new RectF((int)x, (int)y, 64, 64), paint);
 	}
 	
 	@Override

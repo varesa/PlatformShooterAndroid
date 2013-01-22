@@ -1,16 +1,13 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroidAndroid.Utils;
+import android.graphics.Color;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.Utils;
 import fi.dy.esav.JavaGame.enums.AINODE;
 
 public class EnemyEntity extends LivingEntity {
 
-	private Color color = Color.RED;
+	private int color = Color.RED;
 
 	protected final double xacc = 0.5;
 	protected final double xdec = 0.5;
@@ -100,7 +97,7 @@ public class EnemyEntity extends LivingEntity {
 
 		int dist = -1;
 		JumpAiNode closestNode = null;
-		for (AiNode node : AiNode.getNodes()) {
+		/*for (AiNode node : .getNodes()) {
 			if (node instanceof JumpAiNode) {
 				if ((dist == -1 || Utils.getDistanceCenters(node, this) < dist)
 						&& (JavaGame.getWorld().getStory(node) == JavaGame
@@ -111,7 +108,7 @@ public class EnemyEntity extends LivingEntity {
 				}
 
 			}
-		}
+		}*/
 
 		return closestNode;
 	}

@@ -1,11 +1,12 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import android.graphics.Point;
+
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.Rectangle;
 import fi.dy.esav.JavaGame.enums.AINODE;
 
 public class World {
@@ -18,10 +19,12 @@ public class World {
 
 	int storyHeight;
 	int widthUnit;
+	
+	public World(GameEngine engine) {
+		this.engine = engine;
+	}
 
 	public void initialize() {
-		engine = JavaGame.getEngine();
-		
 		initGround();
 		
 		Point playerSpawn = new Point(20, 100);
@@ -66,8 +69,8 @@ public class World {
 	}
 	
 	private void initGround() {
-		int stageWidth = engine.getStage().getContentPane().getWidth();
-		int stageHeight = engine.getStage().getContentPane().getHeight();
+		int stageWidth = engine.getStage().getWidth();
+		int stageHeight = engine.getStage().getHeight();
 		
 		storyHeight = stageHeight/4;
 		widthUnit = stageWidth/16;
@@ -114,7 +117,7 @@ public class World {
 		}
 		engine.addEntity(new GameoverEntity(engine));
 		
-		/*JavaGame.setEngine(new GameEngine());
+		/*JavaGame.setEngine(new GameEngine()); // TODO: Commented out
 		JavaGame.getEngine().start();
 
 		while(!JavaGame.getEngine().getStage().isValid()) continue;
@@ -141,6 +144,16 @@ public class World {
 	public int getStory(Entity ent) {
 		int entCenter = (int) (ent.getY() + ent.getHeight()/2);
 		return (int) (3 - Math.floor(entCenter/storyHeight));
+	}
+	
+	public ArrayList<AiNode> getNodes() {
+		ArrayList<AiNode> nodes = new ArrayList<AiNode>();
+		for(Entity ent: engine.getEntities()) {
+			if (ent instanceof AiNode) {
+				nodes.add((AiNode) ent);
+			}
+		}
+		return nodes;
 	}
 
 	/**

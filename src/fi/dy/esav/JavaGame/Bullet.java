@@ -1,13 +1,16 @@
 package fi.dy.esav.JavaGame;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
 import java.util.ArrayList;
 
-import fi.dy.esav.GameEngineAndroidAndroid.Entity;
-import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroidAndroid.Utils;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.RectF;
+
+import fi.dy.esav.GameEngineAndroid.Entity;
+import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroid.Utils;
 import fi.dy.esav.JavaGame.enums.DIRECTION;
 
 public class Bullet extends Entity {
@@ -16,7 +19,7 @@ public class Bullet extends Entity {
 	private double damage = 11;
 	private DIRECTION direction = null;
 	
-	Color color = Color.GRAY;
+	int color = Color.GRAY;
 
 	public Bullet(GameEngine engine) {
 		super(engine);
@@ -62,9 +65,11 @@ public class Bullet extends Entity {
 	}
 	
 	@Override
-	public void draw(Graphics g) {
-		g.setColor(color);
-		g.fillRect((int)x, (int)y, 10, 5);
+	public void draw(Canvas c) {
+		Paint paint = new Paint();
+		paint.setColor(color);
+		paint.setStyle(Paint.Style.FILL);
+		c.drawRect(new RectF((int)x, (int)y, 10, 5), paint);
 	}
 	
 	/**
