@@ -9,7 +9,7 @@ public class HudEntity extends Entity {
 
 	public HudEntity(GameEngine engine) {
 		super(engine);
-		this.setProperty(ENTITY.NO_ACT);
+		this.properties.add(ENTITY.NO_ACT);
 	}
 	
 	@Override

@@ -30,8 +30,11 @@ public class AiNode extends Entity {
 	}
 	
 	private void init() {
-		this.setProperty(ENTITY.NO_ACT);
-		this.setProperty(ENTITY.NO_DRAW);
+		this.properties.add(ENTITY.NO_ACT);
+		this.properties.add(ENTITY.NO_DRAW);
+		
+		width = 1;
+		height = 1;
 	}
 	
 	Paint paint = new Paint();
@@ -41,14 +44,4 @@ public class AiNode extends Entity {
 		c.drawOval(new RectF((int)x-5, (int)y-5, 10, 10), paint);
 	}
 	
-	@Override
-	public int getWidth() {
-		return 1;
-	}
-	
-	@Override
-	public int getHeight() {
-		return 1;
-	}
-
 }

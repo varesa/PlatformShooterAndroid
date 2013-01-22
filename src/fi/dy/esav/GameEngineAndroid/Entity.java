@@ -19,8 +19,12 @@ public class Entity implements Comparable<Entity>{
 	
 	protected GameEngine engine;
 	
-	private EnumSet<ENTITY> properties;
-	protected double x = 0, y = 0, z = 0;
+	public EnumSet<ENTITY> properties;
+	public double x = 0, y = 0, z = 0;
+	
+	public double width = 0;
+	public double height = 0;
+	
 	
 	/**
 	 * Default constructor
@@ -73,43 +77,7 @@ public class Entity implements Comparable<Entity>{
 	 * To be implemented by a subclass.
 	 */
 	public void act() {	}
-	
-	/**
-	 * Method to return the width of an (drawable) object
-	 * To be implemented by a subclass.
-	 */
-	public int getWidth() {	return -1; }
-	
-	/**
-	 * Method to return the height of an (drawable) object
-	 * To be implemented by a subclass.
-	 */
-	public int getHeight() { return -1; }
-
-	/**
-	 * Set entity special properties (overwrite)
-	 * @param enumSet properties
-	 */
-	public void setProperties(EnumSet<ENTITY> enumSet) {
-		this.properties = enumSet;
-	}
-	
-	/**
-	 * Get entity special properties
-	 * @return enumSet of entity properties
-	 */
-	public EnumSet<ENTITY> getProperties() {
-		return this.properties;
-	}
-	
-	/**
-	 * Add special properties to entity
-	 * @param property Property to be set
-	 */
-	public void setProperty(ENTITY property) {
-		this.properties.add(property);
-	}
-	
+		
 	/**
 	 * Remove special property from entity
 	 * @param property Property to be removed
@@ -122,35 +90,7 @@ public class Entity implements Comparable<Entity>{
 		}
 		return false;
 	}
-	
-	/**
-	 * @return the x
-	 */
-	public double getX() {
-		return x;
-	}
-
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(double x) {
-		this.x = x;
-	}
-
-	/**
-	 * @return the y
-	 */
-	public double getY() {
-		return y;
-	}
-
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(double y) {
-		this.y = y;
-	}
-	
+		
 	/**
 	 * @return the Point where the Entity is
 	 */
@@ -174,33 +114,19 @@ public class Entity implements Comparable<Entity>{
 		this.x = x;
 		this.y = y;
 	}
-	
-	/**
-	 * @return the z
-	 */
-	public double getZ() {
-		return z;
-	}
-
-	/**
-	 * @param z the z to set
-	 */
-	public void setZ(int z) {
-		this.z = z;
-	}
-	
+		
 	/**
 	 * Put the selected object to front
 	 */
 	public void toFront() {
-		this.z = engine.getStage().getMaxZ() + 10;
+		this.z = engine.stage.getMaxZ() + 10;
 	}
 	
 	/**
 	 * Put the selected object to back
 	 */
 	public void toBack() {
-		this.z = engine.getStage().getMinZ() - 10;
+		this.z = engine.stage.getMinZ() - 10;
 	}
 	
 	/**
@@ -210,6 +136,6 @@ public class Entity implements Comparable<Entity>{
 	 * @return difference between the z coordinates of this and other entity
 	 */
 	public int compareTo(Entity otherEnt) {
-		return (int) (this.getZ() - ((Entity)otherEnt).getZ());
+		return (int) (this.z - ((Entity)otherEnt).z);
 	}
 }

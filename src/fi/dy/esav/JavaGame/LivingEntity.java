@@ -76,14 +76,14 @@ public class LivingEntity extends Entity {
 		
 		for(Entity ent : entities) {
 			if(!(ent instanceof GroundEntity)) break;
-			if(this.getY()+this.getHeight() > ent.getY() && this.getY() < ent.getY()+ent.getHeight()) {
-				if( this.getX()+this.getWidth() > ent.getX() && this.getX()+this.getWidth() < ent.getX()+ent.getWidth()) {
+			if(this.y+this.height > ent.y && this.y < ent.y+ent.height) {
+				if( this.x+this.width > ent.x && this.x+this.width < ent.x+ent.width) {
 					this.xvel = 0;
-					this.x = ent.getX()-this.getWidth();
+					this.x = ent.x-this.width;
 				}
-				if( this.getX()-0.1 > ent.getX() && this.getX()-0.1 < ent.getX()+ent.getWidth()) {
+				if( this.x-0.1 > ent.x && this.x-0.1 < ent.x+ent.width) {
 					this.xvel = 0;
-					this.x = ent.getX() + ent.getWidth();
+					this.x = ent.x + ent.width;
 				}
 			}
 		}
@@ -94,15 +94,15 @@ public class LivingEntity extends Entity {
 		
 		for(Entity ent : entities) {
 			if(!(ent instanceof GroundEntity)) break;
-			if(this.getX()+this.getWidth() > ent.getX() && this.getX() < ent.getX()+ent.getWidth()) {
-				if( this.getY()+this.getHeight() > ent.getY() && this.getY()+this.getHeight() < ent.getY()+ent.getHeight()) {
+			if(this.x+this.width > ent.x && this.x < ent.x+ent.width) {
+				if( this.y+this.height > ent.y && this.y+this.height < ent.y+ent.height) {
 					yvel = 0;
-					y = ent.getY()-this.getHeight();
+					y = ent.y-this.height;
 					collided = true;
 				}
-				if( this.getY()-0.1 > ent.getY() && this.getY()-0.1 < ent.getY()+ent.getHeight()) {
+				if( this.y-0.1 > ent.y && this.y-0.1 < ent.y+ent.height) {
 					yvel = 0;
-					y = ent.getY() + ent.getHeight()+0.1;
+					y = ent.y + ent.height+0.1;
 				}
 			}
 
@@ -124,15 +124,4 @@ public class LivingEntity extends Entity {
 		
 
 	}
-	
-	@Override
-	public int getWidth() {
-		return width;
-	}
-	
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
 }

@@ -17,10 +17,10 @@ public class GameEngine {
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	private ArrayList<Entity> entitiesToAdd = new ArrayList<Entity>();
 	private ArrayList<Entity> entitiesToRemove = new ArrayList<Entity>();
-	private Stage stage;
+	public Stage stage;
 	
-	private RenderThread renderer;
-	private Thread rendererThread;
+	public RenderThread renderer;
+	public Thread rendererThread;
 	
 	public Context context;
 	CustomStorage storage;
@@ -55,20 +55,6 @@ public class GameEngine {
 	 */
 	public void stop() {
 		renderer.stop();
-	}
-	
-	/**
-	 * @return the stage
-	 */
-	public Stage getStage() {
-		return stage;
-	}
-
-	/**
-	 * @param stage the stage to set
-	 */
-	public void setStage(Stage stage) {
-		this.stage = stage;
 	}
 	
 	/** 

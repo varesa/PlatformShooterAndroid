@@ -22,6 +22,6 @@ public class Storage extends CustomStorage {
 	
 	public World world;
 	public Display display;
-	public InputState inputstate;
+	public InputState inputstate = new InputState();
 
 }

@@ -14,7 +14,7 @@ public class RenderThread implements Runnable{
 	
 	private GameEngine engine;
 	
-	private int FPS = 60;
+	private int FPS = 40;
 	private boolean running = true;
 	private boolean paused = false;
 	
@@ -45,11 +45,11 @@ public class RenderThread implements Runnable{
 			}
 			
 			for(Entity ent : engine.getEntities()) {
-				if(!ent.getProperties().contains(ENTITY.NO_ACT)) {
+				if(!ent.properties.contains(ENTITY.NO_ACT)) {
 					ent.act();
 				}
 			}
-			engine.getStage().draw();
+			engine.stage.draw();
 			
 			engine.maintain();
 			

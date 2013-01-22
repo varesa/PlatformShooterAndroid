@@ -23,16 +23,30 @@ public class Bullet extends Entity {
 
 	public Bullet(GameEngine engine) {
 		super(engine);
+		init();
 	}
 	
 	public Bullet(Point pos, DIRECTION direction, GameEngine engine) {
 		super(pos, engine);
 		this.direction = direction;
+		init();
 	}
 	
 	public Bullet(double x, double y, DIRECTION direction, GameEngine engine) {
 		super(x, y, engine);
 		this.direction = direction;
+		init();
+	}
+	
+	Paint paint;
+	
+	private void init() {
+		paint = new Paint();
+		paint.setColor(color);
+		paint.setStyle(Paint.Style.FILL);
+		
+		width = 10;
+		height = 5;
 	}
 	
 	@Override
@@ -59,54 +73,13 @@ public class Bullet extends Entity {
 				}
 			}
 		}
-		if(this.x < 0 || this.x > engine.getStage().getWidth()) {
+		if(this.x < 0 || this.x > ((Storage) engine.getCustomStorage()).display.getWidth()) {
 			engine.removeEntity(this);
 		}
 	}
 	
 	@Override
 	public void draw(Canvas c) {
-		Paint paint = new Paint();
-		paint.setColor(color);
-		paint.setStyle(Paint.Style.FILL);
-		c.drawRect(new RectF((int)x, (int)y, 10, 5), paint);
+		c.drawRect(new RectF((int)x, (int)y, (int)x+10, (int)y+5), paint);
 	}
-	
-	/**
-	 * @return the speed
-	 */
-	public double getSpeed() {
-		return speed;
-	}
-
-	/**
-	 * @param speed the speed to set
-	 */
-	public void setSpeed(double speed) {
-		this.speed = speed;
-	}
-
-	/**
-	 * @return the direction
-	 */
-	public DIRECTION getDirection() {
-		return direction;
-	}
-
-	/**
-	 * @param direction the direction to set
-	 */
-	public void setDirection(DIRECTION direction) {
-		this.direction = direction;
-	}
-	
-	@Override
-	public int getWidth() {
-		return 10;
-	}
-
-	public int getHeight() {
-		return 5;
-	}
-
 }

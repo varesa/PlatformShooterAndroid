@@ -13,9 +13,9 @@ public class World {
 	
 	private GameEngine engine;
 	
-	private PlayerEntity player;
+	public PlayerEntity player;
 	
-	private Score score;
+	public Score score;
 
 	int width, height;
 	
@@ -29,13 +29,13 @@ public class World {
 	public void initialize() {
 		initGround();
 		
-		/*Point playerSpawn = new Point(20, 100);
+		Point playerSpawn = new Point(20, 100);
 		player = new PlayerEntity(engine);
 		player.setPos(playerSpawn);
 		
 		engine.addEntity(player);
 		
-		ArrayList<Point> enemySpawns = new ArrayList<Point>();
+		/*ArrayList<Point> enemySpawns = new ArrayList<Point>();
 		enemySpawns.add(new Point(500,50));
 		enemySpawns.add(new Point(50,50));
 		enemySpawns.add(new Point(100,500));
@@ -67,6 +67,8 @@ public class World {
 		score = new Score();
 		HudEntity hud = new HudEntity(engine);
 		engine.addEntity(hud);*/
+		
+		engine.addEntity(new ButtonsOverlayEntity(engine));
 		
 	}
 	
@@ -135,7 +137,7 @@ public class World {
 	}
 	
 	public int getStory(Entity ent) {
-		int entCenter = (int) (ent.getY() + ent.getHeight()/2);
+		int entCenter = (int) (ent.y + ent.height/2);
 		return (int) (3 - Math.floor(entCenter/storyHeight));
 	}
 	
@@ -147,33 +149,5 @@ public class World {
 			}
 		}
 		return nodes;
-	}
-
-	/**
-	 * @return the player
-	 */
-	public PlayerEntity getPlayer() {
-		return player;
-	}
-
-	/**
-	 * @param player the player to set
-	 */
-	public void setPlayer(PlayerEntity player) {
-		this.player = player;
-	}
-
-	/**
-	 * @return the score
-	 */
-	public Score getScore() {
-		return score;
-	}
-
-	/**
-	 * @param score the score to set
-	 */
-	public void setScore(Score score) {
-		this.score = score;
 	}
 }

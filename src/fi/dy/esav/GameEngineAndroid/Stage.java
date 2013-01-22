@@ -14,9 +14,15 @@ import java.util.Collections;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.view.Display;
 import android.view.SurfaceView;
 
 import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
+import fi.dy.esav.JavaGame.InputHandler;
+import fi.dy.esav.JavaGame.Storage;
 
 public class Stage extends SurfaceView {
 	
@@ -27,6 +33,9 @@ public class Stage extends SurfaceView {
 
 	private GameEngine engine;
 	private InputHandler inputhandler;
+	
+	Paint paint;
+	Display display;
 		
 	/**
 	 * Constructor
@@ -37,12 +46,12 @@ public class Stage extends SurfaceView {
 		
 		this.engine = engine;
 		
-		InputState inputstate = new InputState(); 
-		this.inputhandler = new InputHandler(engine, inputstate);
-		//this.addKeyListener(inputhandler);
-		//this.addMouseListener(inputhandler);
-		//this.addMouseMotionListener(inputhandler);
-		engine.setInputState(inputstate);
+		
+		paint = new Paint();
+		paint.setColor(Color.WHITE);
+		paint.setStyle(Paint.Style.FILL);
+		
+		display = ((Storage) engine.getCustomStorage()).display;
 	}
 	
 	/**
@@ -52,8 +61,8 @@ public class Stage extends SurfaceView {
 	public double getMaxZ() {
 		double maxz = -1000;
 		for(Entity ent : engine.getEntities()) {
-			if(ent.getZ() > maxz) {
-				maxz = ent.getZ();
+			if(ent.z > maxz) {
+				maxz = ent.z;
 			}
 		}
 		return maxz;
@@ -66,11 +75,21 @@ public class Stage extends SurfaceView {
 	public double getMinZ() {
 		double minz = 1000;
 		for(Entity ent : engine.getEntities()) {
-			if(ent.getZ() < minz) {
-				minz = ent.getZ();
+			if(ent.z < minz) {
+				minz = ent.z;
 			}
 		}
 		return minz;
+	}
+	
+	public int stageWidth = 0;
+	public int stageHeight = 0;
+	
+	@Override
+	public void onDraw(Canvas c) {
+		super.onDraw(c);
+		stageWidth  = getWidth();
+		stageHeight = getHeight();
 	}
 	
 	/**
@@ -84,8 +103,11 @@ public class Stage extends SurfaceView {
 		@SuppressWarnings("unchecked")
 		ArrayList<Entity> entities = (ArrayList<Entity>) engine.getEntities().clone();
 		Collections.sort(entities);
+
+		canvas.drawRect(new Rect(0, 0, display.getWidth(), display.getHeight()), paint);
+		canvas.drawColor(Color.WHITE);
 		for(Entity ent : entities) {
-			if(!ent.getProperties().contains(ENTITY.NO_DRAW)) {
+			if(!ent.properties.contains(ENTITY.NO_DRAW)) {
 				ent.draw(canvas);
 			}
 		}

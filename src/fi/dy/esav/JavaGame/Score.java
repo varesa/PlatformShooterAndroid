@@ -1,7 +1,7 @@
 package fi.dy.esav.JavaGame;
 
 public class Score {
-	private int kills = 0;
+	public int kills = 0;
 	
 	private long startTime;
 	private boolean running = true;
@@ -9,14 +9,6 @@ public class Score {
 	
 	public Score() {
 		startTime = System.currentTimeMillis();
-	}
-	
-	public void increase() {
-		kills++;
-	}
-	
-	public int getKills() {
-		return kills;
 	}
 	
 	public void stopCounting() {

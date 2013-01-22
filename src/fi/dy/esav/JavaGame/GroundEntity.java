@@ -12,7 +12,6 @@ import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
 public class GroundEntity extends Entity {
 	
-	private int width = 10, height = 10;
 	private int color = Color.GRAY;
 
 	public GroundEntity(GameEngine engine) {
@@ -22,7 +21,7 @@ public class GroundEntity extends Entity {
 	public GroundEntity(GameEngine engine, Rectangle rect) {
 		super(engine);
 		
-		this.setProperty(ENTITY.NO_ACT);
+		this.properties.add(ENTITY.NO_ACT);
 		
 		x = rect.x;
 		y = rect.y;
@@ -35,37 +34,6 @@ public class GroundEntity extends Entity {
 		Paint paint = new Paint();
 		paint.setColor(color);
 		paint.setStyle(Paint.Style.FILL);
-		c.drawRect(new RectF((int)x, (int)y, (int)x+width, (int)y+height), paint);
+		c.drawRect(new RectF((int)x, (int)y, (int)(x+width), (int)(y+height)), paint);
 	}
-
-	/**
-	 * @return the width
-	 */
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	/**
-	 * @param width the width to set
-	 */
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	/**
-	 * @return the height
-	 */
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
-	/**
-	 * @param height the height to set
-	 */
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
 }

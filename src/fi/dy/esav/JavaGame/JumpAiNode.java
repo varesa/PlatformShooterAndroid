@@ -5,7 +5,7 @@ import fi.dy.esav.JavaGame.enums.AINODE;
 
 public class JumpAiNode extends AiNode {
 
-	private AINODE direction;
+	public AINODE direction;
 	
 	//Removed default constructor
 	private JumpAiNode() { super(null);	}
@@ -22,13 +22,4 @@ public class JumpAiNode extends AiNode {
 		}
 		this.direction = direction;
 	}
-	
-	public AINODE getDirection() {
-		return direction;
-	}
-	
-	public void setDirection(AINODE direction) {
-		this.direction = direction;
-	}
-
 }

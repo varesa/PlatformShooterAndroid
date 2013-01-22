@@ -61,7 +61,7 @@ public class PlayerEntity extends LivingEntity {
 					this.engine.addEntity(new Bullet(bulletPos, DIRECTION.LEFT,
 							this.engine));
 				} else if (facing == DIRECTION.RIGHT) {
-					bulletPos.offset(getWidth()+20, 0);
+					bulletPos.offset(width+20, 0);
 					this.engine.addEntity(new Bullet(bulletPos,
 							DIRECTION.RIGHT, this.engine));
 				}
@@ -70,6 +70,21 @@ public class PlayerEntity extends LivingEntity {
 		}
 
 		super.act();
+		
+		InputState is = ((Storage) engine.getCustomStorage()).inputstate;
+		
+		if(is.left && System.currentTimeMillis() > is.leftLastUp + 20) {
+			is.left = false;
+		}
+		if(is.right && System.currentTimeMillis() > is.rightLastUp + 20) {
+			is.right = false;
+		}
+		if(is.shoot && System.currentTimeMillis() > is.shootLastUp + 20) {
+			is.shoot = false;
+		}
+		if(is.jump && System.currentTimeMillis() > is.jumpLastUp + 20) {
+			is.jump = false;
+		}
 
 	}
 }
