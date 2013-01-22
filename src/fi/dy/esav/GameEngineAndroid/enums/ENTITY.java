@@ -6,7 +6,7 @@
  *          View it at: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package fi.dy.esav.GameEngine.enums;
+package fi.dy.esav.GameEngineAndroid.enums;
 public enum ENTITY {
 	NO_DRAW, NO_ACT
 } 

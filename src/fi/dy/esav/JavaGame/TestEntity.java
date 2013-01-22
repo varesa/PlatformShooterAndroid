@@ -5,8 +5,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
 
 /**
  * This is a tool for debugging / engine testing 

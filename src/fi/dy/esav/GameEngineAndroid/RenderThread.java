@@ -6,9 +6,9 @@
  *          View it at: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package fi.dy.esav.GameEngine;
+package fi.dy.esav.GameEngineAndroid;
 
-import fi.dy.esav.GameEngine.enums.ENTITY;
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
 public class RenderThread implements Runnable{
 	
@@ -49,7 +49,7 @@ public class RenderThread implements Runnable{
 					ent.act();
 				}
 			}
-			engine.getStage().repaint();
+			engine.getStage().draw();
 			
 			engine.maintain();
 			

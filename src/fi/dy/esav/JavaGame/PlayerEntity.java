@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 
-import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.InputState;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.InputState;
 import fi.dy.esav.JavaGame.enums.DIRECTION;
 
 public class PlayerEntity extends LivingEntity {

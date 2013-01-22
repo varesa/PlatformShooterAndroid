@@ -3,9 +3,9 @@ package fi.dy.esav.JavaGame;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.enums.ENTITY;
 
 public class HudEntity extends Entity {
 

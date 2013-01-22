@@ -6,9 +6,11 @@
  *          View it at: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package fi.dy.esav.GameEngine;
+package fi.dy.esav.GameEngineAndroid;
 
 import java.util.ArrayList;
+
+import android.content.Context;
 
 public class GameEngine {
 	
@@ -26,28 +28,17 @@ public class GameEngine {
 	/**
 	 * Constructor method.
 	 */
-	public GameEngine() {
-		stage = new Stage(this);
-		stage.setSize(800, 600);
+	public GameEngine(Context context) {
+		stage = new Stage(this, context);
 	}
 	
 	/**
 	 * Start the engine (initialization + show)
 	 */
 	public void start() {
-		
 		renderer = new RenderThread(this);
 		rendererThread = new Thread(renderer);
-		
-		this.getStage().setVisible(true);
 		rendererThread.start();
-	}
-	
-	/**
-	 * Close the window
-	 */
-	public void close() {
-		this.getStage().setVisible(false);
 	}
 	
 	/**

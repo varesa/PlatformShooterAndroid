@@ -6,18 +6,19 @@
  *          View it at: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package fi.dy.esav.GameEngine;
+package fi.dy.esav.GameEngineAndroid;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.JFrame;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.view.SurfaceView;
 
-import fi.dy.esav.GameEngine.enums.ENTITY;
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
-public class Stage extends JFrame {
+public class Stage extends SurfaceView {
 	
 	/**
 	 * Generated class serial version UID
@@ -26,44 +27,22 @@ public class Stage extends JFrame {
 
 	private GameEngine engine;
 	private InputHandler inputhandler;
-	
-	private Image backgroundImage;
-	
-	/**
-	 * Disabled the default constructor method
-	 */
-	@SuppressWarnings("unused")
-	private Stage() {}
-	
+		
 	/**
 	 * Constructor
 	 * @param The main GameEngine instance
 	 */
-	public Stage(GameEngine engine) {
+	public Stage(GameEngine engine, Context context) {
+		super(context);
+		
 		this.engine = engine;
 		
 		InputState inputstate = new InputState(); 
-		this.inputhandler = new InputHandler(inputstate);
-		this.addKeyListener(inputhandler);
-		this.addMouseListener(inputhandler);
-		this.addMouseMotionListener(inputhandler);
+		this.inputhandler = new InputHandler(engine, inputstate);
+		//this.addKeyListener(inputhandler);
+		//this.addMouseListener(inputhandler);
+		//this.addMouseMotionListener(inputhandler);
 		engine.setInputState(inputstate);
-		
-		this.pack();
-	}
-
-	/**
-	 * @return the background
-	 */
-	public Image getBackgroundImage() {
-		return this.backgroundImage;
-	}
-
-	/**
-	 * @param background the background to set
-	 */
-	public void setBackgroundImage(Image background) {
-		this.backgroundImage = background;
 	}
 	
 	/**
@@ -96,21 +75,20 @@ public class Stage extends JFrame {
 	
 	/**
 	 * Draw all entities on screen
-	 * @param display Frame graphics to draw on
 	 */
-	@Override
-	public void paint(Graphics graphics) {
-		Image buffer = createImage(getWidth(), getHeight());
-		Graphics bg = buffer.getGraphics();
+	public void draw() {
+		while(!getHolder().getSurface().isValid()) {}
+		
+		Canvas canvas = getHolder().lockCanvas();
 	
 		@SuppressWarnings("unchecked")
 		ArrayList<Entity> entities = (ArrayList<Entity>) engine.getEntities().clone();
 		Collections.sort(entities);
 		for(Entity ent : entities) {
 			if(!ent.getProperties().contains(ENTITY.NO_DRAW)) {
-				ent.draw(bg);
+				ent.draw(canvas);
 			}
 		}
-		this.getContentPane().getGraphics().drawImage(buffer, 0, 0, this);
+		getHolder().unlockCanvasAndPost(canvas);
 	}
 }

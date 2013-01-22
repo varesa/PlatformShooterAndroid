@@ -8,9 +8,9 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.InputState;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.InputState;
 
 public class GameoverEntity extends Entity {
 

@@ -3,8 +3,8 @@ package fi.dy.esav.JavaGame;
 import java.awt.Point;
 import java.lang.reflect.InvocationTargetException;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
 
 public class EntitySpawner extends Entity {
 

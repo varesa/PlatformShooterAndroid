@@ -6,13 +6,14 @@
  *          View it at: http://creativecommons.org/licenses/by-nc-sa/3.0/
  */
 
-package fi.dy.esav.GameEngine;
+package fi.dy.esav.GameEngineAndroid;
 
-import java.awt.Graphics;
-import java.awt.Point;
 import java.util.EnumSet;
 
-import fi.dy.esav.GameEngine.enums.ENTITY;
+import android.graphics.Canvas;
+import android.graphics.Point;
+
+import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 
 public class Entity implements Comparable<Entity>{
 	
@@ -65,7 +66,7 @@ public class Entity implements Comparable<Entity>{
 	 * To be implemented by a subclass.
 	 * @param g The instance of graphics to draw on.
 	 */
-	public void draw(Graphics g) {	}
+	public void draw(Canvas c) {	}
 	
 	/**
 	 * Method to process input, calculate actions & etc. (if applicable)

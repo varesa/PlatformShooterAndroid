@@ -4,9 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.enums.ENTITY;
 
 public class GroundEntity extends Entity {
 	

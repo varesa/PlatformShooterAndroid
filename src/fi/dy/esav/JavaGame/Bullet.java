@@ -5,9 +5,9 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import fi.dy.esav.GameEngineAndroid.Entity;
-import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.Utils;
+import fi.dy.esav.GameEngineAndroidAndroid.Entity;
+import fi.dy.esav.GameEngineAndroidAndroid.GameEngine;
+import fi.dy.esav.GameEngineAndroidAndroid.Utils;
 import fi.dy.esav.JavaGame.enums.DIRECTION;
 
 public class Bullet extends Entity {
