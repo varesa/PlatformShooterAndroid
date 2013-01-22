@@ -14,7 +14,7 @@ public class HudEntity extends Entity {
 	
 	@Override
 	public void draw(Canvas c) {
-		String score = String.valueOf(JavaGame.getWorld().getScore().getKills());
+		//String score = String.valueOf(JavaGame.getWorld().getScore().getKills());
 		/*Font font = new Font("Arial", Font.PLAIN, 20);
 		g.setFont(font);
 		g.drawString(score, 20, engine.getStage().getContentPane().getHeight()-20);*/ //TODO: commented out

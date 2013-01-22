@@ -1,6 +1,9 @@
 package fi.dy.esav.JavaGame;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import fi.dy.esav.GameEngineAndroid.GameEngine;
 import fi.dy.esav.GameEngineAndroid.Utils;
 import fi.dy.esav.JavaGame.enums.AINODE;
@@ -44,7 +47,7 @@ public class EnemyEntity extends LivingEntity {
 			// Do nothing
 		} else {
 			if (ai) {
-				World world = JavaGame.getWorld();
+				World world = ((Storage)engine.getCustomStorage()).world;
 				PlayerEntity player = world.getPlayer();
 
 				int myStory = world.getStory(this);
@@ -127,7 +130,11 @@ public class EnemyEntity extends LivingEntity {
 	}
 
 	@Override
-	public void draw(Graphics g) {
+	public void draw(Canvas c) {
+		Paint paint = new Paint();
+		paint.setColor(color);
+		paint.setStyle(Paint.Style.STROKE);
+		
 		if (System.currentTimeMillis() < startTime) {
 			double time = (double) (startTime - System.currentTimeMillis())
 					/ (double) spawnTime;
@@ -140,26 +147,25 @@ public class EnemyEntity extends LivingEntity {
 			double sizex = width + 2 * time * width;
 			double sizey = height + 2 * time * height;
 			
-			Color newcolor = new Color(color.getRed(), color.getGreen(), color.getBlue(), (int) (255 - 255*time));
+			Paint newpaint = new Paint();
+			newpaint.setARGB((int) (255 - 255*time), Color.red(color), Color.green(color), Color.blue(color));
 			
-			Graphics2D g2d = (Graphics2D) g;
-			g2d.setColor(newcolor);
-			g2d.rotate(rotation, originx, originy);
-			g2d.drawRect((int) (originx-sizex/2), (int) (originy-sizey/2), (int)sizex, (int)sizey);
-			g2d.rotate(-rotation, originx, originy);
+			c.rotate((float) rotation, (float) originx, (float) originy);
+			c.drawRect(new RectF((int) (originx-sizex/2), (int) (originy-sizey/2), (int) ((originx-sizex/2)+sizex), (int) ((originy-sizey/2)+sizey)), newpaint);
+			c.rotate((float) -rotation, (float) originx, (float) originy);
 			
 			
 		} else {
 			if (System.currentTimeMillis() < fullOpacity) {
 				int opacity = (int) ((double) (fullOpacity - System
 						.currentTimeMillis()) / (double) fadetime * (double) 255);
-				Color opaque = new Color(255, 0, 0, opacity);
-				g.setColor(opaque);
-				g.fillRect((int) x, (int) y, width, height);
+				Paint opaque = new Paint();
+				opaque.setARGB(opacity, 255, 0, 0);
+				opaque.setStyle(Paint.Style.FILL);
+				c.drawRect(new RectF((int) x, (int) y, (int) x+width, (int) y+height), opaque);
 			}
 
-			g.setColor(color);
-			g.drawRect((int) x, (int) y, width, height);
+			c.drawRect(new RectF((int) x, (int) y, (int) x+width, (int) y+height), paint);
 		}
 	}
 }

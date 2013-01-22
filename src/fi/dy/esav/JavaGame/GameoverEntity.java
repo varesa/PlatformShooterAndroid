@@ -9,9 +9,6 @@ import android.view.KeyEvent;
 
 import fi.dy.esav.GameEngineAndroid.Entity;
 import fi.dy.esav.GameEngineAndroid.GameEngine;
-import fi.dy.esav.GameEngineAndroid.InputState;
-
-
 
 public class GameoverEntity extends Entity {
 
@@ -52,7 +49,7 @@ public class GameoverEntity extends Entity {
 
 	@Override
 	public void act() {
-		InputState input = engine.getInputState();
+		InputState input = ((Storage)engine.getCustomStorage()).inputstate;
 		/*if(input.isKeyDown(KeyEvent.VK_ENTER)) {
 			JavaGame.getWorld().reinitialize();
 		} else if (input.isKeyDown(KeyEvent.VK_ESCAPE)) {

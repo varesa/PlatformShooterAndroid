@@ -21,15 +21,24 @@ public class GameEngine {
 	
 	private RenderThread renderer;
 	private Thread rendererThread;
-	private InputHandler inputhandler;
-	private InputState	 inputstate;
 	
+	public Context context;
+	CustomStorage storage;
 
 	/**
 	 * Constructor method.
 	 */
 	public GameEngine(Context context) {
 		stage = new Stage(this, context);
+		this.context = context;
+	}
+	
+	public CustomStorage getCustomStorage() {
+		return storage;
+	}
+	
+	public void setCustomStorage(CustomStorage storage) {
+		this.storage = storage;
 	}
 	
 	/**
@@ -101,40 +110,6 @@ public class GameEngine {
 	 */
 	public synchronized ArrayList<Entity> getEntities() {
 		return this.entities;
-	}
-	
-	/**
-	 * Returns the input handler
-	 * Visibility: package-private
-	 * @return the input handler
-	 */
-	InputHandler getInputhandler() {
-		return inputhandler;
-	}
-
-	/**
-	 * Sets the inputHandler
-	 * Visibility: package-private
-	 * @param inputhandler the inputhandler to set
-	 */
-	synchronized void setInputhandler(InputHandler inputhandler) {
-		this.inputhandler = inputhandler;
-	}
-
-	/**
-	 * Return the state of inputs
-	 * @return the inputstate
-	 */
-	public InputState getInputState() {
-		return inputstate;
-	}
-
-	/**
-	 * Sets the input state container
-	 * @param inputstate the input state container
-	 */
-	synchronized void setInputState(InputState inputstate) {
-		this.inputstate = inputstate;
 	}
 	
 }

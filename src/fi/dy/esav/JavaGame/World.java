@@ -17,6 +17,8 @@ public class World {
 	
 	private Score score;
 
+	int width, height;
+	
 	int storyHeight;
 	int widthUnit;
 	
@@ -27,7 +29,7 @@ public class World {
 	public void initialize() {
 		initGround();
 		
-		Point playerSpawn = new Point(20, 100);
+		/*Point playerSpawn = new Point(20, 100);
 		player = new PlayerEntity(engine);
 		player.setPos(playerSpawn);
 		
@@ -64,13 +66,13 @@ public class World {
 		
 		score = new Score();
 		HudEntity hud = new HudEntity(engine);
-		engine.addEntity(hud);
+		engine.addEntity(hud);*/
 		
 	}
 	
 	private void initGround() {
-		int stageWidth = engine.getStage().getWidth();
-		int stageHeight = engine.getStage().getHeight();
+		int stageWidth = ((Storage)engine.getCustomStorage()).display.getWidth(); //engine.getStage().getWidth();
+		int stageHeight = ((Storage)engine.getCustomStorage()).display.getHeight(); //engine.getStage().getHeight();
 		
 		storyHeight = stageHeight/4;
 		widthUnit = stageWidth/16;
@@ -117,18 +119,9 @@ public class World {
 		}
 		engine.addEntity(new GameoverEntity(engine));
 		
-		/*JavaGame.setEngine(new GameEngine()); // TODO: Commented out
-		JavaGame.getEngine().start();
-
-		while(!JavaGame.getEngine().getStage().isValid()) continue;
-		
-		JavaGame.setWorld(new World());
-		JavaGame.getWorld().initialize();
-		
-		//engine.getStage().setVisible(false);
-		engine.getStage().dispose();
-		engine.stop();*/
-	}
+		/*world.clear()
+		world.initialize();*/
+		}
 	
 	public void reinitialize() {		
 		clear();

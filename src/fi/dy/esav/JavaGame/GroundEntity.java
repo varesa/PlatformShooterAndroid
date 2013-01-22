@@ -13,7 +13,7 @@ import fi.dy.esav.GameEngineAndroid.enums.ENTITY;
 public class GroundEntity extends Entity {
 	
 	private int width = 10, height = 10;
-	private int color = Color.BLACK;
+	private int color = Color.GRAY;
 
 	public GroundEntity(GameEngine engine) {
 		super(engine);
@@ -35,7 +35,7 @@ public class GroundEntity extends Entity {
 		Paint paint = new Paint();
 		paint.setColor(color);
 		paint.setStyle(Paint.Style.FILL);
-		c.drawRect(new RectF((int)x, (int)y, width, height), paint);
+		c.drawRect(new RectF((int)x, (int)y, (int)x+width, (int)y+height), paint);
 	}
 
 	/**
